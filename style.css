@@ -1349,6 +1349,9 @@ a {
 .text-area {
     resize: none;
 }
+.form-input.text-area::placeholder {
+    color: var(--text-muted);
+}
 
 .form-group .text-area ~ .form-label {
     top: 24px;
