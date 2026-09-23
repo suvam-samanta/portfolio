@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
+        sendMail();
         const submitBtn = contactForm.querySelector('#submit-btn');
         const originalBtnContent = submitBtn.innerHTML;
 
@@ -409,3 +409,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+function sendMail (){
+    let params = {
+        name : document.getElementById("contact-name").value,
+        email : document.getElementById("contact-email").value,
+        message : document.getElementById("contact-message").value
+    }
+    emailjs.send("service_zmohin8","template_fehvnnp",params)
+    .then(
+            (response) => {
+                console.log("SUCCESS!", response.status, response.text);
+            },
+            (error) => {
+                console.log("FAILED...", error);
+                console.log("Error status:", error.status);
+                console.log("Error text:", error.text);
+            }
+        );
+    emailjs.send("service_zmohin8","template_v9s7hgz",params)
+}
